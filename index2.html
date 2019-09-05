@@ -42,6 +42,34 @@
         div.leaflet-bar {
             text-align: center;
     </style>
+    
+    <style>
+        .timer__item {
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .timer__item+.timer__item {
+            margin-left: 10px;
+        }
+        
+        .timer__value,
+        .timer__label {
+            display: block;
+        }
+        
+        .timer__value {
+            font-size: 15px;
+        }
+        
+        timer__label {
+            font-size: 5px;
+        }
+    </style>
+    
+    
+    
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
@@ -75,6 +103,41 @@
                        <!-- <iframe width="300" height="330" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTZaSd3yVNKt2vwAkvhROjhUnjuuGLHCWwF2_oW7KEcZKegqPJ8TlkvWWigpD_x4AkIqVuMIHyLIMwm/pubchart?oid=849579008&amp;format=interactive"></iframe> -->
                         <iframe width="209.5" height="233.36708860759492" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTZaSd3yVNKt2vwAkvhROjhUnjuuGLHCWwF2_oW7KEcZKegqPJ8TlkvWWigpD_x4AkIqVuMIHyLIMwm/pubchart?oid=505448252&amp;format=interactive"></iframe>
                         
+                        
+                        <div id="js-timer" class="timer" role="timer" aria-label="A timer, counting down to {{eventName}}" data-endtime="2019-10-27 00:00:00">
+
+        <span class="timer__item" id="timer-days">
+				<span class="timer__value">{{days}}</span>
+        <span class="timer__label">Días</span>
+        </span>
+        <!--/.timer__item-->
+
+        <span class="timer__item" id="timer-hours">
+				<span class="timer__value">{{hours}}</span>
+        <span class="timer__label">
+					Horas
+				</span>
+        </span>
+        <!--/.timer__item-->
+
+        <span class="timer__item" id="timer-minutes">
+				<span class="timer__value">{{minutes}}</span>
+        <span class="timer__label">
+					Min
+				</span>
+        </span>
+        <!--/.timer__item-->
+
+        <span class="timer__item" id="timer-seconds">
+				<span class="timer__value">{{seconds}}</span>
+        <span class="timer__label">
+					Seg
+				</span>
+        </span>
+        <!--/.timer__item-->
+
+    </div>
+    <!--/.timer-->
                     
                     </section>
                 </div>
@@ -236,6 +299,20 @@
         </script>
 
 
+        <script src="js/timer.js"></script>
+    <script>
+        (function() {
+
+            Timer.start({
+                'timer': document.getElementById('js-timer'),
+                'endtime': document.getElementById('js-timer').getAttribute('data-endtime')
+            });
+
+        })();
+    </script>
+        
+        
+        
 
 </body>
 
